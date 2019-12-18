@@ -12,13 +12,12 @@ import matplotlib.pyplot as plt
 
 class KNN(object):
     def __init__(self,input,target):
-        self.input = input
         self.target = target
-        self.buildKDTree()
+        self.buildKDTree(input)
 
-    def buildKDTree(self):
+    def buildKDTree(self,data):
         print("building kdtree...")
-        self.kdtree = kdtree.KDTree(self.input,leafsize=2048)
+        self.kdtree = kdtree.KDTree(data,leafsize=2048)
 
     def forecast(self,data,k=3):
         _,loc = self.kdtree.query(data,k)
@@ -75,7 +74,7 @@ if __name__ == "__main__":
             return 1
         else:
             return -1
-    input = np.random.uniform(value_range[0], value_range[1], (100, 2))
+    input = np.random.uniform(value_range[0], value_range[1], (500, 2))
     target = [f(x1, x2) for x1, x2 in input]
 
     model = KNN(input,target)
