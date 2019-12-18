@@ -1,2 +1,2 @@
 # StatisticalLearning
-A Simple Reproduction by python.
+A Simple Reproduction with python.
