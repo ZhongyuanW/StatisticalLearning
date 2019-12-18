@@ -56,21 +56,21 @@ class Perceptron(object):
 
 
     def draw(self):
-        self.positive_input = []
-        self.nagtive_input = []
+        positive_input = []
+        nagtive_input = []
 
         for i in range(len(self.target)):
             if self.target[i] == 1:
-                self.positive_input.append(self.input[i])
+                positive_input.append(self.input[i])
             else:
-                self.nagtive_input.append(self.input[i])
+                nagtive_input.append(self.input[i])
 
         plt.figure(1)
-        x1 = [x[0] for x in self.positive_input]
-        x2 = [x[1] for x in self.positive_input]
+        x1 = [x[0] for x in positive_input]
+        x2 = [x[1] for x in positive_input]
         plt.scatter(x1, x2, label="positive", color="g", s=30, marker="o")
-        x1 = [x[0] for x in self.nagtive_input]
-        x2 = [x[1] for x in self.nagtive_input]
+        x1 = [x[0] for x in nagtive_input]
+        x2 = [x[1] for x in nagtive_input]
         plt.scatter(x1, x2, label="nagtive", color="r", s=30, marker="x")
         plt.xlabel("x1")
         plt.ylabel("x2")
@@ -81,6 +81,8 @@ class Perceptron(object):
         plt.plot(x,f(x),"b-",lw=2)
         plt.title = "Perceptron"
         plt.legend()
+        if not os.path.exists("model"):
+            os.mkdir("model")
         plt.savefig("model/result.png")
         plt.show()
 
